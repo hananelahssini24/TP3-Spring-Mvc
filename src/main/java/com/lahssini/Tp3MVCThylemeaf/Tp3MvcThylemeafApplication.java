@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.net.PasswordAuthentication;
 import java.util.Date;
 
 @SpringBootApplication
@@ -40,11 +44,13 @@ public class Tp3MvcThylemeafApplication implements CommandLineRunner {
 		*/
 
 		patientRepository.save(new Patient(null,"Mohamed",new Date(),false,142));
-		patientRepository.save(new Patient(null,"Imane",new Date(),true,198));
-		patientRepository.save(new Patient(null,"Yassine",new Date(),true,342));
-		patientRepository.save(new Patient(null,"Laila",new Date(),false,123));
-
-
+		patientRepository.save(new Patient(null,"Janat",new Date(),true,198));
+		patientRepository.save(new Patient(null,"Soufiane",new Date(),true,342));
+		patientRepository.save(new Patient(null,"Hanane",new Date(),false,123));
+	}
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
 
 	}
 }
